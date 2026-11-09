@@ -220,10 +220,23 @@ The project demonstrates that driver behaviour detection can be integrated into 
 - [x] Model comparison completed
 - [x] Best-performing model identified
 
+### Analytics Layer
+
+- [x] Prediction datasets loaded into Databricks
+- [x] Unified prediction view created
+- [x] Enriched prediction view created
+- [x] Accuracy by risk category analysis completed
+- [x] Accuracy by behaviour analysis completed
+- [x] Confidence analysis completed
+- [x] Misclassification analysis completed
+
+☐ Semantic model
+☐ Power BI dashboard
+☐ Final reporting layer
+
 ### Next Steps
-1. Generate behavioural prediction events.
-2. Load prediction outputs into Databricks.
-3. Create Bronze, Silver and Gold analytical layers.
-4. Build analytical views using SQL.
-5. Develop Power BI dashboards.
-6. Deliver business-focused distracted driving insights.
+
+1. Create Power BI semantic model.
+2. Build Driver Attention Monitoring dashboards.
+3. Develop analytical KPIs and performance measures.
+4. Deliver business-focused distracted driving insights.
