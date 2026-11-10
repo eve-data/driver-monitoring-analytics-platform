@@ -1,9 +1,11 @@
 # Distracted Driver Analytics Platform
 
 ## Overview
+
 This project explores how driver monitoring data can be transformed into an end-to-end analytics and machine learning platform for identifying distracted driving behaviours.
 
 The project combines:
+
 - Python
 - Databricks
 - Delta Lake
@@ -12,7 +14,9 @@ The project combines:
 - PyTorch
 - Power BI
 
-Rather than focusing solely on image classification, the project demonstrates how behavioural observations can be processed, enriched, classified, and ultimately transformed into actionable safety insights.
+Rather than focusing solely on image classification, the project demonstrates an end-to-end workflow including data quality validation, metadata engineering, machine learning, data modelling, and analytical reporting. The objective is to show how driver monitoring observations can be transformed into actionable safety insights.
+
+The solution follows the complete journey from raw image data through validation, enrichment, classification, analytics, and reporting.
 
 ---
 
@@ -29,24 +33,9 @@ The project combines:
 
 ## Architecture
 
-```text
-Raw Images
-    ↓
-Behaviour Classification Model (PyTorch)
-    ↓
-MLflow Experiment Tracking
-    ↓
-Predicted Behaviour Events
-    ↓
-Bronze Layer (Databricks)
-    ↓
-Silver Layer
-    ↓
-Gold Layer
-    ↓
-Reporting & Visualisation
-```
+The solution follows the workflow below:
 
+Raw Images → Data Quality Validation → Metadata Generation → Bronze Layer → Silver Layer → Behaviour Classification Models → Prediction Analytics Layer → Reporting & Visualisation
 ---
 
 ## Dataset
@@ -62,6 +51,7 @@ Behaviour categories:
 The dataset was originally created for computer vision classification rather than estimating real-world distracted driving prevalence. Dataset distributions should therefore be interpreted as labelled training observations rather than representative population statistics.
 
 ### Data Quality Validation
+
 A validation process was implemented prior to model training to verify image integrity across the dataset.
 
 - **Images checked:** 7,286
@@ -69,6 +59,8 @@ A validation process was implemented prior to model training to verify image int
 - **Corrupted images removed from the training dataset:** 10
 
 Corrupted files were detected using Python and PIL image verification before model development. Invalid images were isolated from the training dataset to prevent data loading failures during PyTorch model training. This step helped establish a clean and reliable dataset for downstream machine learning workflows.
+
+Metadata was generated using custom Python scripts prior to ingestion into Databricks. The resulting metadata dataset formed the foundation of the Bronze and Silver analytical layers used throughout the project and supported subsequent machine learning and analytics workflows.
 
 ---
 
@@ -121,7 +113,7 @@ Both models were initialized using pretrained ImageNet weights and fine-tuned fo
 | **ResNet18** | **93.22%** | **0.2592** |
 
 #### Selected Model
-**ResNet18** achieved the highest test accuracy and was selected as the best-performing model within the current experimental setup. Although MobileNetV2 is a lighter architecture with lower computational requirements, ResNet18 delivered stronger classification performance on the final evaluation dataset.
+**ResNet18** achieved the highest test accuracy and was selected as the best-performing model within the current experimental setup. Although MobileNetV2 is a lighter architecture with lower computational requirements, ResNet18 delivered stronger classification performance on the final evaluation dataset. MobileNetV2 remains a strong candidate for future deployment scenarios due to its suitability for edge devices and real-time monitoring applications.
 
 ---
 
@@ -191,8 +183,8 @@ The project demonstrates that driver behaviour detection can be integrated into 
 
 ## Project Status
 
-**Current phase:** `Machine Learning Evaluation Complete`  
-**Next phase:** `Analytics & Reporting Layer`
+**Current phase:** `Analytics Layer Complete`
+**Next phase:** `Semantic Model & Power BI Reporting`
 
 ### Current Progress
 
